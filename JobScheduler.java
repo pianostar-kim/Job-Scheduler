@@ -59,9 +59,9 @@ public class JobScheduler {
          executer.join();
          DecimalFormat formatter = new DecimalFormat("#,##0.####");
          System.out.println("Total number of jobs submitted: " + jobsSubmitted);
-         System.out.println("Average turnaround time: " + formatter.format((totalTurnaroundTime / jobsSubmitted)) + " seconds");
-         System.out.println("Average CPU time:        " + formatter.format((totalCPUTime / jobsSubmitted)) + " seconds");
-         System.out.println("Average waiting time:    " + formatter.format((totalWaitingTime / jobsSubmitted)) + " seconds");
+         System.out.println("Average turnaround time: " + (jobsSubmitted > 0 ? formatter.format((totalTurnaroundTime / jobsSubmitted)) : formatter.format(jobsSubmitted)) + " seconds");
+         System.out.println("Average CPU time:        " + (jobsSubmitted > 0 ? formatter.format((totalCPUTime / jobsSubmitted)) : formatter.format(jobsSubmitted)) + " seconds");
+         System.out.println("Average waiting time:    " + (jobsSubmitted > 0 ? formatter.format((totalWaitingTime / jobsSubmitted)) : formatter.format(jobsSubmitted)) + " seconds");
       }
       catch (InterruptedException e) {
          System.out.println("An error occurred while waiting for both threads to finish.");
